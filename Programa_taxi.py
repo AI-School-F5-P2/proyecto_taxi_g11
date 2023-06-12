@@ -1,7 +1,9 @@
 #! /usr/bin/env python 3
 
 #TODO  El programa da la bienvenida, explica el funcionamiento y se queda a la espera de que se le indique por input que la carrera ha comenzado.
-
+def mostrar_bienvenida():
+    print("Bienvenido a DigiTaxi")
+    print("El programa para calcular las tarifas de tus carreras")
 
 #TODO Cuando se le dé la orden de empezar, el programa debe empezar a calcular la tarifa contando con que el taxi empezará siempre parado.
 
