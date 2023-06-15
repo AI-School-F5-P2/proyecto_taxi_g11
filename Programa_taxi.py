@@ -54,11 +54,10 @@ class Taxi:
             self.total += tiempo_transcurrido * self.tarifa_parado
 
         euros =self.total/ 100       
+        print(f"La carrera ha terminado. Total a pagar {euros:.2f} euros.")
         
 
 def main():
-
-def mostrar_bienvenida():
     print("Bienvenido a DigiTaxi")
     print("El programa para calcular las tarifas de tus carreras")
 
