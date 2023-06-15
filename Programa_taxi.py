@@ -37,6 +37,7 @@ class Taxi:
             tiempo_pausa = time.time()
             tiempo_transcurrido = tiempo_pausa - self.tiempo_ultimo_cambio
             self.tiempo_ultimo_cambio = tiempo_pausa
+            self.en_movimiento = False
             self.total += tiempo_transcurrido * self.tarifa_movimiento 
             euros = self.total /100
             print(f"El taxi se ha detenido temporalmente. Total acumulado {euros:.2f} euros.")
@@ -48,13 +49,14 @@ class Taxi:
             tiempo_pausa = time.time()
             tiempo_transcurrido = tiempo_pausa - self.tiempo_ultimo_cambio
             self.tiempo_ultimo_cambio = tiempo_pausa
+            self.en_movimiento = False
             self.total += tiempo_transcurrido * self.tarifa_movimiento 
 
         if not self.en_movimiento:
             tiempo_arrancar = time.time()
             tiempo_transcurrido = tiempo_arrancar - self.tiempo_ultimo_cambio
             self.tiempo_ultimo_cambio = tiempo_arrancar
-            self.en_movimiento = True
+            self.en_movimiento = False
             self.total += tiempo_transcurrido * self.tarifa_parado
 
         euros =self.total/ 100       
