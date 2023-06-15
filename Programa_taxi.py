@@ -59,6 +59,23 @@ class Taxi:
 
         euros =self.total/ 100       
         print(f"La carrera ha terminado. Total a pagar {euros:.2f} euros.")
+    
+    # Definimos el método que muestran las opciones cuando has iniciado la carrera.
+    def mostrar_opciones(self):
+        if self.en_movimiento:
+            print("Opciones disponibles: ")
+            print("Escribe 'p' cuando pares el taxi")
+            print("Escribe 't' para terminar la carrera y obtener el monto total")
+        else:
+            print("Opciones disponibles: ")
+            print("Escribe 'c' cuando continues el recorrido del taxi")
+            print("Escribe 't' para terminar la carrera y obtener el monto total")
+
+    # Definimos el método que muestren instrucciones cuando no hay ninguna carrera iniciada.
+    def mostrar_instrucciones(self):
+        print("Instrucciones de uso: ")
+        print("Escribe 'i' para iniciar una nueva carrera")
+        print("Escribe 's' para salir del programa")
         
 # Definimos la función principal del programa que llamará a la clase y los métodos de taxi.
 def main():
@@ -67,6 +84,9 @@ def main():
 
 if __name__ == "__main__":
     main()    # Esto hace que si queremos importar el código en otro programa omita la función main
+
+
+taxi = Taxi()
 
 
 
