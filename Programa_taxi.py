@@ -118,61 +118,19 @@ def main():
             print("Comando no válido")
         taxi.mostrar_opciones()
 
-
-
-
-
-
     print("Bienvenido a DigiTaxi")
     print("El programa para calcular las tarifas de tus carreras")
 
+    taxi.mostrar_opciones
 
-"""    while True:
-        
-        if not carrera_iniciada:
-            taxi.mostrar_instrucciones()
-            comando = input(">> ")
-        
-            if comando == "i":
-                if not carrera_iniciada:
-                    taxi.iniciar_taximetro()
-                    carrera_iniciada = True
-                else:
-                    print("La carrera ya ha comenzado")
-            elif comando == 's':
-                print("Gracias por usar el programa. ¡Hasta la próxima!")
-                break
+    keyboard.on_press_key("enter", presionando_enter)
+    keyboard.on_press_key("up", presionando_up)
+    keyboard.on_press_key("down ", presionando_down)
+    keyboard.on_press_key("space", presionando_space)
 
-            else:
-                print("comando inválido. Por favor inténtalo de nuevo.")
-
-        if carrera_iniciada:
-            taxi.mostrar_opciones()
-            comando = input(">")
-
-            if taxi.en_movimiento:
-                if comando == "p":
-                    taxi.pausar_carrera()
-
-                elif comando == "t":
-                    taxi.calcular_total()
-                    carrera_iniciada = False
-                
-                else:
-                    print("comando inválido. Por favor inténtalo de nuevo.")
-            
-            else:
-                if comando == "c":
-                    taxi.continuar_carrera()
-                
-                elif comando == "t":
-                    taxi.calcular_total()
-                    carrera_iniciada = False
-
-                else:
-                    print("comando inválido. Por favor inténtalo de nuevo.")"""
-
-
+    keyboard.wait("esc")
+    keyboard.unhook_all()
+    
 if __name__ == "__main__":
     main()    # Esto hace que si queremos importar el código en otro programa omita la función main
 
