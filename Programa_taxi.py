@@ -13,11 +13,11 @@ class Taxi:
         self.tarifa_parado = 2
         self.tarifa_movimiento = 5
         self.total = None
-        self.carrera_iniciada = False
+        self.taximetro_iniciado = False
 
     # Definimos el método que arranca el taximetro.    
-    def empezar_carrera(self):
-        self.carrera_iniciada = True
+    def iniciar_taximetro(self):
+        self.taximetro_iniciado = True
         self.total = 0
         self.tiempo_inicio = time.time()
         self.tiempo_ultimo_cambio = self.tiempo_inicio
@@ -69,7 +69,7 @@ class Taxi:
     
     # Definimos el método que muestran las opciones cuando has iniciado la carrera.
     def mostrar_opciones(self):
-        if self.carrera_iniciada:
+        if self.taximetro_iniciado:
             if self.en_movimiento:
                 print("Opciones disponibles: ")
                 print("Escribe 'p' cuando pares el taxi")
@@ -88,7 +88,8 @@ def main():
     taxi = Taxi()
 
     def presionando_enter(event):
-        if taxi.carrera_iniciada
+        if not taxi.carrera_iniciada:
+
 
 
 
@@ -107,7 +108,7 @@ def main():
         
             if comando == "i":
                 if not carrera_iniciada:
-                    taxi.empezar_carrera()
+                    taxi.iniciar_taximetro()
                     carrera_iniciada = True
                 else:
                     print("La carrera ya ha comenzado")
