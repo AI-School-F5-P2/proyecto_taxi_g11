@@ -47,7 +47,7 @@ class Taxi:
             euros = self.total /100
             print(f"El taxi se ha detenido temporalmente. Total acumulado {euros:.2f} euros.")
 
-    
+
     # Definimos el método que calcula el total de la tarifa al final de la carrera.
     def calcular_total(self):
         if self.en_movimiento:
@@ -66,7 +66,7 @@ class Taxi:
 
         euros =self.total/ 100
         print(f"La carrera ha terminado. Total a pagar {euros:.2f} euros.")
-        self.carrera_iniciada = False
+        self.taximetro_iniciado = False
 
     # Definimos el método que muestran las opciones cuando has iniciado la carrera.
     def mostrar_opciones(self):
