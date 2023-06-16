@@ -88,8 +88,35 @@ def main():
     taxi = Taxi()
 
     def presionando_enter(event):
-        if not taxi.carrera_iniciada:
+        if not taxi.taximetro_iniciado:
+            taxi.iniciar_taximetro()
+        else:
+            print("Comando no válido")
+        taxi.mostrar_opciones()
 
+
+    def presionando_up(event):
+        if taxi.taximetro_iniciado:
+            taxi.continuar_carrera()
+        else:
+            print("Comando no válido")
+        taxi.mostrar_opciones()
+
+
+    def presionando_down(event):
+        if taxi.taximetro_iniciado:
+            taxi.pausar_carrera()
+        else:
+            print("Comando no válido")
+        taxi.mostrar_opciones()
+
+
+    def presionando_space(event):
+        if taxi.taximetro_iniciado:
+            taxi.calcular_total()
+        else:
+            print("Comando no válido")
+        taxi.mostrar_opciones()
 
 
 
