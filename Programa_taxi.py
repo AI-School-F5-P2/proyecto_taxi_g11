@@ -1,5 +1,6 @@
 #! /usr/bin/env python 3
 import time
+import keyboard
 
 # Designamos la clase Taxi
 class Taxi:
@@ -8,11 +9,15 @@ class Taxi:
     def __init__(self):
         self.en_movimiento = False
         self.tiempo_inicio = None
+        self.tiempo_ultimo_cambio = None
         self.tarifa_parado = 2
-        self.tarifa_movimiento = 5  
+        self.tarifa_movimiento = 5
+        self.total = None
+        self.carrera_iniciada = False
 
     # Definimos el método que arranca el taximetro.    
     def empezar_carrera(self):
+        self.carrera_iniciada = True
         self.total = 0
         self.tiempo_inicio = time.time()
         self.tiempo_ultimo_cambio = self.tiempo_inicio
@@ -64,31 +69,37 @@ class Taxi:
     
     # Definimos el método que muestran las opciones cuando has iniciado la carrera.
     def mostrar_opciones(self):
-        if self.en_movimiento:
-            print("Opciones disponibles: ")
-            print("Escribe 'p' cuando pares el taxi")
-            print("Escribe 't' para terminar la carrera y obtener el monto total")
+        if self.carrera_iniciada:
+            if self.en_movimiento:
+                print("Opciones disponibles: ")
+                print("Escribe 'p' cuando pares el taxi")
+                print("Escribe 't' para terminar la carrera y obtener el monto total")
+            else:
+                print("Opciones disponibles: ")
+                print("Escribe 'c' cuando continues el recorrido del taxi")
+                print("Escribe 't' para terminar la carrera y obtener el monto total")
         else:
-            print("Opciones disponibles: ")
-            print("Escribe 'c' cuando continues el recorrido del taxi")
-            print("Escribe 't' para terminar la carrera y obtener el monto total")
-
-    # Definimos el método que muestren instrucciones cuando no hay ninguna carrera iniciada.
-    def mostrar_instrucciones(self):
-        print("Instrucciones de uso: ")
-        print("Escribe 'i' para iniciar una nueva carrera")
-        print("Escribe 's' para salir del programa")
+            print("Instrucciones de uso: ")
+            print("Escribe 'i' para iniciar una nueva carrera")
+            print("Escribe 's' para salir del programa")
         
 # Definimos la función principal del programa que llamará a la clase y los métodos de taxi.
 def main():
+    taxi = Taxi()
+
+    def presionando_enter(event):
+        if taxi.carrera_iniciada
+
+
+
+
+
+
     print("Bienvenido a DigiTaxi")
     print("El programa para calcular las tarifas de tus carreras")
 
-    taxi = Taxi()
-    
-    carrera_iniciada = False
-    
-    while True:
+
+"""    while True:
         
         if not carrera_iniciada:
             taxi.mostrar_instrucciones()
@@ -131,7 +142,7 @@ def main():
                     carrera_iniciada = False
 
                 else:
-                    print("comando inválido. Por favor inténtalo de nuevo.")
+                    print("comando inválido. Por favor inténtalo de nuevo.")"""
 
 
 if __name__ == "__main__":
