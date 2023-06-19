@@ -1,4 +1,5 @@
 #! /usr/bin/env python 3
+import msvcrt
 import time
 import keyboard
 
@@ -66,6 +67,7 @@ class Taxi:
 
         euros =self.total/ 100
         print(f"La carrera ha terminado. Total a pagar {euros:.2f} euros.")
+        print("************************************************************************")
         self.taximetro_iniciado = False
 
     # Definimos el método que muestran las opciones cuando has iniciado la carrera.
@@ -137,6 +139,8 @@ def main():
 
     keyboard.wait('esc')
     keyboard.unhook_all()
+    while msvcrt.kbhit():
+        msvcrt.getch()
 
 if __name__ == "__main__":
     main()    # Esto hace que si queremos importar el código en otro programa omita la función main
