@@ -70,7 +70,7 @@ class Taxi:
         print("************************************************************************")
         self.taximetro_iniciado = False
 
-    # Definimos el método que muestran las opciones cuando has iniciado la carrera.
+    # Definimos el método que muestra las opciones cuando has iniciado la carrera.
     def mostrar_opciones(self):
         if self.taximetro_iniciado:
             if self.en_movimiento:
@@ -132,19 +132,26 @@ def main():
 
     taxi.mostrar_opciones()
 
+    # Hacemos los callbacks a las funciones al presionar las teclas.
     keyboard.on_press_key('enter', presionando_enter)
     keyboard.on_press_key('up', presionando_up)
     keyboard.on_press_key('down', presionando_down)
     keyboard.on_press_key('space', presionando_space)
 
+
+    #Estas 3  líneas son para que se cirre bien el programa
     keyboard.wait('esc')
-    keyboard.unhook_all()
+    keyboard.unhook_all() # Borra las conexiones hechas entre las teclas y las funciones.
     while msvcrt.kbhit():
         msvcrt.getch()
 
-if __name__ == "__main__":
-    main()    # Esto hace que si queremos importar el código en otro programa omita la función main
+    """msvcrt: Las teclas pulsadas que la librería keyboard ha ido guardando internamnte,
+    las ejecuta y libera la memoria. al no haber conexiones con funciones ya, no pasa nada"""
 
+
+# Esto hace que si queremos importar el código en otro programa omita la función main
+if __name__ == "__main__":
+    main()    
 
 
 
