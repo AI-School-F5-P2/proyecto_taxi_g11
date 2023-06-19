@@ -89,6 +89,11 @@ class Taxi:
             print("- Pulsa 'escape' para salir del programa.")
             print("------------------------------------------------------------------------")
 
+    # Definimos una función para configurar las tarifas
+    def configurar_tarifas(self, nueva_tarifa_parado, nueva_tarifa_movimiento):
+        self.tarifa_parado = nueva_tarifa_parado
+        self.tarifa_movimiento = nueva_tarifa_movimiento
+
 # Definimos la función principal del programa que llamará a la clase y los métodos de taxi.
 def main():
 
@@ -127,8 +132,13 @@ def main():
 
     print("Bienvenido a DigiTaxi")
     print("El programa para calcular las tarifas de tus carreras")
+
+    # Llamamos a la función configurar tarifas y pedimos que introduzca los parámetros por input
+    taxi.configurar_tarifas(int(input("Introduce la nueva tarifa en parado: ")),
+                            int(input("Introduce la nueva tarifa en movimiento: ")))
     print(f"La tarifa en parado es de {taxi.tarifa_parado} céntimos por segundo.")
     print(f"La tarifa en movimiento es de {taxi.tarifa_movimiento} céntimos por segundo.")
+    print("------------------------------------------------------------------------")
 
     taxi.mostrar_opciones()
 
