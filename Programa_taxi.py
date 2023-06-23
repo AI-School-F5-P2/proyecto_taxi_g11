@@ -2,6 +2,12 @@
 # import msvcrt
 import time
 import keyboard
+import logging
+
+
+# Configuramos el sistema de logs
+logging.basicConfig(level=logging.DEBUG, filename='registro.log', encoding='utf-8',
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Designamos la clase Taxi
 class Taxi:
@@ -15,6 +21,8 @@ class Taxi:
         self.tarifa_movimiento = 5
         self.total = None
         self.taximetro_iniciado = False
+        self.logger = logging.getLogger(__name__)
+
 
     # Definimos el método que arranca el taximetro.
     def iniciar_taximetro(self):
@@ -23,6 +31,7 @@ class Taxi:
         self.tiempo_inicio = time.time()
         self.tiempo_ultimo_cambio = self.tiempo_inicio
         print("La carrera ha comenzado, ¡allá vamos!")
+        self.logger.info('La carrera ha comenzado')
 
 
     # Definimos el método que calcula la tarifa acumulada cuando nos ponemos en movimiento.
@@ -35,6 +44,9 @@ class Taxi:
             self.total += tiempo_transcurrido * self.tarifa_parado
             euros = self.total /100
             print(f"El taxi continua su recorrido. Total acumulado {euros:.2f} euros.")
+            self.logger.info('El taxi continúa su recorrido')
+            self.logger.debug(f"Se han añadido {(tiempo_transcurrido * self.tarifa_parado):.0f} céntimos al total")
+
 
 
     # Definimos el método que calcula la tarifa acumulada cuando nos detenemos.
@@ -47,6 +59,8 @@ class Taxi:
             self.total += tiempo_transcurrido * self.tarifa_movimiento
             euros = self.total /100
             print(f"El taxi se ha detenido temporalmente. Total acumulado {euros:.2f} euros.")
+            self.logger.info('El taxi se ha detenido temporalmente')
+            self.logger.debug(f"Se han añadido {(tiempo_transcurrido * self.tarifa_movimiento):.0f} céntimos al total")
 
 
     # Definimos el método que calcula el total de la tarifa al final de la carrera.
@@ -55,20 +69,32 @@ class Taxi:
             tiempo_pausa = time.time()
             tiempo_transcurrido = tiempo_pausa - self.tiempo_ultimo_cambio
             self.tiempo_ultimo_cambio = tiempo_pausa
-            self.en_movimiento = False
             self.total += tiempo_transcurrido * self.tarifa_movimiento
+            self.logger.info('La carrera ha terminado')
+            self.logger.debug(f"Se han añadido {(tiempo_transcurrido * self.tarifa_movimiento):.0f} céntimos al total")
+            self.logger.debug("La carrera ha durado {minutos:.0f} minutos y {segundos:.0f} segundos.".format(
+                minutos = (tiempo_arrancar- self.tiempo_inicio) // 60,
+                segundos = (tiempo_arrancar- self.tiempo_inicio) % 60))
+
 
         if not self.en_movimiento:
             tiempo_arrancar = time.time()
             tiempo_transcurrido = tiempo_arrancar - self.tiempo_ultimo_cambio
             self.tiempo_ultimo_cambio = tiempo_arrancar
-            self.en_movimiento = False
             self.total += tiempo_transcurrido * self.tarifa_parado
+            self.logger.info('La carrera ha terminado')
+            self.logger.debug(f"Se han añadido {(tiempo_transcurrido * self.tarifa_parado):.0f} centimos al total")
+            self.logger.debug("La carrera ha durado {minutos:.0f} minutos y {segundos:.0f} segundos.".format(
+                minutos = (tiempo_arrancar- self.tiempo_inicio) // 60,
+                segundos = (tiempo_arrancar- self.tiempo_inicio) % 60))
+
 
         euros =self.total/ 100
         print(f"La carrera ha terminado. Total a pagar {euros:.2f} euros.")
         print("************************************************************************")
+        self.en_movimiento = False
         self.taximetro_iniciado = False
+
 
     # Definimos el método que muestra las opciones cuando has iniciado la carrera.
     def mostrar_opciones(self):
@@ -96,6 +122,7 @@ class Taxi:
 
 # Definimos la función principal del programa que llamará a la clase y los métodos de taxi.
 def main():
+    logging.info('Inicio del programa')
 
     taxi = Taxi()
 
@@ -134,8 +161,8 @@ def main():
     print("El programa para calcular las tarifas de tus carreras")
 
     # Llamamos a la función configurar tarifas y pedimos que introduzca los parámetros por input
-    taxi.configurar_tarifas(int(input("Introduce la nueva tarifa en parado: ")),
-                            int(input("Introduce la nueva tarifa en movimiento: ")))
+    taxi.configurar_tarifas(int(input("Introduce la nueva tarifa en parado, en céntimos por segundo: ")),
+                            int(input("Introduce la nueva tarifa en movimiento, en céntimos por segundo: ")))
     print(f"La tarifa en parado es de {taxi.tarifa_parado} céntimos por segundo.")
     print(f"La tarifa en movimiento es de {taxi.tarifa_movimiento} céntimos por segundo.")
     print("------------------------------------------------------------------------")
@@ -158,11 +185,11 @@ def main():
     """msvcrt: Las teclas pulsadas que la librería keyboard ha ido guardando internamnte,
     las ejecuta y libera la memoria. al no haber conexiones con funciones ya, no pasa nada"""
 
+    logging.info('Fin del programa')
 
 # Esto hace que si queremos importar el código en otro programa omita la función main
 if __name__ == "__main__":
-    main()    
-
+    main()
 
 
 
