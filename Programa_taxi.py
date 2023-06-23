@@ -1,5 +1,5 @@
 #! /usr/bin/env python 3
-import msvcrt
+# import msvcrt
 import time
 import keyboard
 
@@ -152,8 +152,8 @@ def main():
     #Estas 3  líneas son para que se cirre bien el programa
     keyboard.wait('esc')
     keyboard.unhook_all() # Borra las conexiones hechas entre las teclas y las funciones.
-    while msvcrt.kbhit():
-        msvcrt.getch()
+    '''while msvcrt.kbhit():
+        msvcrt.getch()'''
 
     """msvcrt: Las teclas pulsadas que la librería keyboard ha ido guardando internamnte,
     las ejecuta y libera la memoria. al no haber conexiones con funciones ya, no pasa nada"""
