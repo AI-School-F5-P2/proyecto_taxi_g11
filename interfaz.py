@@ -11,6 +11,9 @@ class TaxiApp:
         self.window.title("DigiTaxi")
         self.taxi = tx.Taxi()
 
+        # Mostramos el total acumulado
+        self.label_bienvenida = tk.Label(self.window, text="¡Bienvenid@ a DigiTaxi! :)")
+        self.label_bienvenida.pack(padx=10, pady=10)
 
         # Definimos un Frame para las tarifas
         self.frame_tarifa =tk.Frame(self.window)
@@ -19,62 +22,62 @@ class TaxiApp:
         # Creamos el spinbox de tarifa parado
         self.tarifa_parado = tk.StringVar(value=self.taxi.tarifa_parado)
         self.label_tarifa_parado = tk.Label(self.frame_tarifa,
-                                            text="Tarifa Parado:")
-        self.label_tarifa_parado.grid(row=0, column=0)
+                                            text="Tarifa Parado(c/s):")
+        self.label_tarifa_parado.grid(row=0, column=0, padx=5, pady=5)
         self.spinbox_tarifa_parado = tk.Spinbox(self.frame_tarifa,
                                                 from_=0,
                                                 to=30,
                                                 textvariable=self.tarifa_parado)
-        self.spinbox_tarifa_parado.grid(row=0, column=1)
+        self.spinbox_tarifa_parado.grid(row=0, column=1, padx=5, pady=5)
         self.button_tarifa_parado = tk.Button(self.frame_tarifa,
                                               text="\N{check mark}",
                                               command=self.actualizar_tarifa_parado)
-        self.button_tarifa_parado.grid(row=0, column=3)
+        self.button_tarifa_parado.grid(row=0, column=3, padx=5, pady=5)
 
         #Creamos el spinbox de tarifa en movimiento
         self.frame_tarifa_movimiento =tk.Frame(self.window)
         self.frame_tarifa_movimiento.pack()
         self.tarifa_movimiento = tk.StringVar(value=self.taxi.tarifa_movimiento)
         self.label_tarifa_movimiento = tk.Label(self.frame_tarifa,
-                                            text="Tarifa Movimiento:")
-        self.label_tarifa_movimiento.grid(row=1, column=0)
+                                            text="Tarifa Movimiento(c/s):")
+        self.label_tarifa_movimiento.grid(row=1, column=0, padx=5, pady=5)
         self.spinbox_tarifa_movimiento = tk.Spinbox(self.frame_tarifa,
                                                 from_=0,
                                                 to=30,
                                                 textvariable=self.tarifa_movimiento)
-        self.spinbox_tarifa_movimiento.grid(row=1, column=1)
+        self.spinbox_tarifa_movimiento.grid(row=1, column=1, padx=5, pady=5)
         self.button_tarifa_movimiento = tk.Button(self.frame_tarifa,
                                                   text="\N{check mark}",
                                                   command=self.actualizar_tarifa_movimiento)
-        self.button_tarifa_movimiento.grid(row=1, column=3)
+        self.button_tarifa_movimiento.grid(row=1, column=3, padx=5, pady=5)
 
         # Mostramos el total acumulado
         self.label_costo = tk.Label(self.window, text="Costo de la carrera: €0.00")
-        self.label_costo.pack()
+        self.label_costo.pack(padx=10, pady=10)
 
         # Creamos los botones del taxímetro
         self.button_start = tk.Button(self.window,
-                                      text="Inicio de carrera",
+                                      text="Iniciar carrera",
                                       command=self.iniciar_taximetro,
                                       width=20,
                                       height=1)
-        self.button_start.pack()
+        self.button_start.pack(padx=2, pady=2)
 
         self.button_continue = tk.Button(self.window,
-                                    text="Continuar",
+                                    text="Reanudar marcha",
                                     command=self.continuar_carrera,
                                     width=20,
                                     height=1,
                                     state=tk.DISABLED)
-        self.button_continue.pack()
+        self.button_continue.pack(padx=2, pady=2)
 
         self.button_pause = tk.Button(self.window,
-                                 text="Pausar",
+                                 text="Pausar marcha",
                                  command=self.pausar_carrera,
                                  width=20,
                                  height=1,
                                  state=tk.DISABLED)
-        self.button_pause.pack()
+        self.button_pause.pack(padx=2, pady=2)
 
         self.button_end = tk.Button(self.window,
                                text="Terminar carrera",
@@ -82,7 +85,7 @@ class TaxiApp:
                                width=20,
                                height=1,
                                state=tk.DISABLED)
-        self.button_end.pack()
+        self.button_end.pack(padx=2, pady=2)
 
     # Creamos el método que llama a iniciar_taximetro de Taxi()
     def iniciar_taximetro(self):
