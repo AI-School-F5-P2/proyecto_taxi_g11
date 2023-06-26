@@ -1,6 +1,6 @@
 import unittest
 import time
-import Programa_taxi as tx
+import taxi as tx
 
 MARGEN_ERROR = 0.1
 
