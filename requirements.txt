@@ -1,0 +1,10 @@
+# Requirement para taxi.py
+
+# Requisitos básicos
+python>=3.6
+
+# Requisitos adicionales para el registro de registros
+loguru>=0.5.3
+
+# Requisito para interfaz
+Tkinter
