@@ -11,6 +11,9 @@ class TaxiApp:
         self.window.title("DigiTaxi")
         self.taxi = tx.Taxi()
 
+        # Mostramos el total acumulado
+        self.label_bienvenida = tk.Label(self.window, text="Bienvenid@ a DigiTaxi! :)")
+        self.label_bienvenida.pack()
 
         # Definimos un Frame para las tarifas
         self.frame_tarifa =tk.Frame(self.window)
