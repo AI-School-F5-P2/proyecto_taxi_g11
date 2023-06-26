@@ -19,7 +19,7 @@ class TaxiApp:
         # Creamos el spinbox de tarifa parado
         self.tarifa_parado = tk.StringVar(value=self.taxi.tarifa_parado)
         self.label_tarifa_parado = tk.Label(self.frame_tarifa,
-                                            text="Tarifa Parado:")
+                                            text="Tarifa Parado(c/s):")
         self.label_tarifa_parado.grid(row=0, column=0)
         self.spinbox_tarifa_parado = tk.Spinbox(self.frame_tarifa,
                                                 from_=0,
@@ -36,7 +36,7 @@ class TaxiApp:
         self.frame_tarifa_movimiento.pack()
         self.tarifa_movimiento = tk.StringVar(value=self.taxi.tarifa_movimiento)
         self.label_tarifa_movimiento = tk.Label(self.frame_tarifa,
-                                            text="Tarifa Movimiento:")
+                                            text="Tarifa Movimiento(c/s):")
         self.label_tarifa_movimiento.grid(row=1, column=0)
         self.spinbox_tarifa_movimiento = tk.Spinbox(self.frame_tarifa,
                                                 from_=0,
