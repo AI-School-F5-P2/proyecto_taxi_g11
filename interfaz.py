@@ -54,14 +54,14 @@ class TaxiApp:
 
         # Creamos los botones del taxímetro
         self.button_start = tk.Button(self.window,
-                                      text="Inicio de carrera",
+                                      text="Iniciar carrera",
                                       command=self.iniciar_taximetro,
                                       width=20,
                                       height=1)
         self.button_start.pack()
 
         self.button_continue = tk.Button(self.window,
-                                    text="Continuar",
+                                    text="Reanudar marcha",
                                     command=self.continuar_carrera,
                                     width=20,
                                     height=1,
@@ -69,7 +69,7 @@ class TaxiApp:
         self.button_continue.pack()
 
         self.button_pause = tk.Button(self.window,
-                                 text="Pausar",
+                                 text="Pausar marcha",
                                  command=self.pausar_carrera,
                                  width=20,
                                  height=1,
