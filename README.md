@@ -1,12 +1,15 @@
 # DigiTaxi
+
+---
+
 Aplicación que busca ayudar al conductor que brinda una carrera de taxi a calcular el total de su tarifa considerando las variables posibles durante el servicio.
 ## Tabla de contenidos
-- Requisitos previos
-- Instalación
-- Uso
-- Contribución
-- Créditos
-- Licencia
+- [Requisitos previos](#requisitos-previos)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Contribución](#contribución)
+- [Créditos](#créditos)
+- [Licencia](#licencia)
 ### Requisitos previos
 Para el desarrollo de este proyecto se utilizó la herramiento python en su versión 3.10 principalmente para el armado del código base, a su vez se implementaron bibliotecas como Time, Loggin, unittest y tkinter asi como el uso de un entorno virtual con dichas caracteristicas.
 ### Instalación
